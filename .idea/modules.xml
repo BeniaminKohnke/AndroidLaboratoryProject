@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AndroidLaboratoryProject.iml" filepath="$PROJECT_DIR$/.idea/AndroidLaboratoryProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LoginScreen.iml" filepath="$PROJECT_DIR$/.idea/modules/LoginScreen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LoginScreen.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LoginScreen.app.iml" />
     </modules>
   </component>
 </project>
