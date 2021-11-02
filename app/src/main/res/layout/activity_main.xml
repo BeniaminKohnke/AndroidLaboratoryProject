@@ -7,12 +7,70 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/ErrorPassword"
+        android:layout_width="227dp"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="@string/errorpassword"
+        android:textColor="#A6FF0000"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="132dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="21dp"
+        android:backgroundTint="#C62500EF"
+        android:onClick="sendMessage"
+        android:text="@string/wprowadz"
+        app:layout_constraintBaseline_toBaselineOf="@+id/wpisaniehasla"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/wpisaniehasla" />
+
+    <EditText
+        android:id="@+id/wpisaniehasla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="156dp"
+        android:autofillHints="@string/wpiszhaslo"
+        android:ems="10"
+        android:hint="@string/wpiszhaslo"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="132dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="444dp"
+        android:background="#5926AC"
+        android:onClick="createdAccountAction"
+        android:text="@string/create_accout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toEndOf="@+id/ErrorPassword"
+        app:layout_constraintTop_toBottomOf="@+id/login_button"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

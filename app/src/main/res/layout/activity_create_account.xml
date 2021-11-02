@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateAccountActivity">
+
+    <TextView
+        android:id="@+id/create_account_tV"
+        android:layout_width="213dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/create_accout"
+        android:textSize="22sp"
+        android:gravity="center"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonNameNick"
+        android:layout_width="211dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginBottom="32dp"
+        android:autofillHints="name"
+        android:ems="10"
+        android:hint="@string/nameOrNick"
+        android:inputType="textPersonName"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonPassword"
+        android:layout_width="211dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginBottom="32dp"
+        android:autofillHints="password"
+        android:ems="10"
+        android:hint="@string/wpiszhaslo"
+        android:inputType="textPassword"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonRepetPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonRepetPassword"
+        android:layout_width="211dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="360dp"
+        android:autofillHints="password"
+        android:ems="10"
+        android:hint="@string/repetPassword"
+        android:inputType="textPassword"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/redCrossRepetPassword"
+        android:layout_width="54dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="364dp"
+        android:contentDescription="@string/redCross"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonRepetPassword"
+        app:srcCompat="@drawable/img" />
+
+    <ImageView
+        android:id="@+id/redCrossPassword"
+        android:layout_width="54dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="36dp"
+        android:contentDescription="@string/redCross"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/redCrossRepetPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonPassword"
+        app:srcCompat="@drawable/img" />
+
+    <ImageView
+        android:id="@+id/redCrossNameOrNick"
+        android:layout_width="54dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/redCross"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/redCrossPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonNameNick"
+        app:srcCompat="@drawable/img" />
+
+    <ImageView
+        android:id="@+id/greenMarkRepetPassword"
+        android:layout_width="54dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="364dp"
+        android:contentDescription="@string/greenMark"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonRepetPassword"
+        app:srcCompat="@drawable/img_1" />
+
+    <ImageView
+        android:id="@+id/greenMarkPassword"
+        android:layout_width="54dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="36dp"
+        android:visibility="invisible"
+        android:contentDescription="@string/greenMark"
+        app:layout_constraintBottom_toTopOf="@+id/redCrossRepetPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonPassword"
+        app:srcCompat="@drawable/img_1" />
+
+    <ImageView
+        android:id="@+id/greenMarkNameOrNick"
+        android:layout_width="54dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/greenMark"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/redCrossPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonNameNick"
+        app:srcCompat="@drawable/img_1" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="205dp"
+        android:layout_height="81dp"
+        android:layout_marginBottom="224dp"
+        android:text="@string/create"
+        android:backgroundTint="#35DC2E"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
