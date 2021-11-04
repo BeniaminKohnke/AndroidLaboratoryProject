@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/ErrorPassword"
+        android:id="@+id/errorPassword"
         android:layout_width="227dp"
         android:layout_height="44dp"
         android:gravity="center"
@@ -34,13 +34,13 @@
         android:backgroundTint="#C62500EF"
         android:onClick="sendMessage"
         android:text="@string/wprowadz"
-        app:layout_constraintBaseline_toBaselineOf="@+id/wpisaniehasla"
+        app:layout_constraintBaseline_toBaselineOf="@+id/passwordViewId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/wpisaniehasla" />
+        app:layout_constraintStart_toEndOf="@+id/passwordViewId" />
 
     <EditText
-        android:id="@+id/wpisaniehasla"
+        android:id="@+id/passwordViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -69,7 +69,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.937"
-        app:layout_constraintStart_toEndOf="@+id/ErrorPassword"
+        app:layout_constraintStart_toEndOf="@+id/errorPassword"
         app:layout_constraintTop_toBottomOf="@+id/login_button"
         app:layout_constraintVertical_bias="0.0" />
 
