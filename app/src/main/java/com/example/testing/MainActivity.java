@@ -10,32 +10,26 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String haslo = "com.example.myfirstapp.MESSAGE";
-    public  String password = "jp2gmd";
+    public static final String PASSWORD_VIEW_TEXT = "com.example.myfirstapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void sendMessage(View view)
-    {
+    public void sendMessage(View view){
         Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.wpisaniehasla);
-        String message = editText.getText().toString();
-        if(message.equals(password))
-        {
-                intent.putExtra(haslo, message);
-                startActivity(intent);
-        }
-        else
-        {
-            TextView textView = findViewById(R.id.ErrorPassword);
-            textView.setVisibility(View.VISIBLE);
+        EditText passwordView = findViewById(R.id.passwordViewId);
+        String passwordFromView = passwordView.getText().toString();
+        if(DBConnection.checkLoggingData("PAPAJ", passwordFromView) == 1){
+            intent.putExtra(PASSWORD_VIEW_TEXT, passwordFromView);
+            startActivity(intent);
+        }else{
+            TextView errorPasswordView = findViewById(R.id.errorPassword);
+            errorPasswordView.setVisibility(View.VISIBLE);
         }
     }
-    public void createdAccountAction(View view)
-    {
+    public void createdAccountAction(View view){
         Intent intent = new Intent(this,CreateAccountActivity.class);
         startActivity(intent);
     }
