@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
     public static final String PASSWORD_VIEW_TEXT = "com.example.myfirstapp.MESSAGE";
 
     @Override
@@ -19,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void sendMessage(View view){
         Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText passwordView = findViewById(R.id.passwordViewId);
-        String passwordFromView = passwordView.getText().toString();
-        if(DBConnection.checkLoggingData("PAPAJ", passwordFromView) == 1){
+        String passwordFromView = ((EditText)findViewById(R.id.passwordViewId)).getText().toString();
+        String userNameFromView = ((EditText)findViewById(R.id.userNameViewId)).getText().toString();
+
+        if(DBConnection.checkLoggingData(userNameFromView, passwordFromView) == 1){
             intent.putExtra(PASSWORD_VIEW_TEXT, passwordFromView);
             startActivity(intent);
         }else{
-            TextView errorPasswordView = findViewById(R.id.errorPassword);
-            errorPasswordView.setVisibility(View.VISIBLE);
+            findViewById(R.id.errorPassword).setVisibility(View.VISIBLE);
         }
     }
     public void createdAccountAction(View view){

@@ -2,16 +2,27 @@ package com.example.testing;
 
 public class DBConnection {
     //temporary database adapter
-    private static String userNameFromDB = "";
-    private static String passwordFromDB = "";
+    private static String userNameFromDB = "PAPAJ";
+    private static String passwordFromDB = "2137";
 
-    /** Returns message code based on action*/
-    public static byte addUser(String userName, String password){
+    /** Returns message code based on action
+     * 0 - if account was not created
+     * 1 - if account was created
+     * */
+    public static byte createAccount(String userName, String password){
         userNameFromDB = userName;
         passwordFromDB = password;
 
         //Check if account already exists and add if not
         return 0;
+    }
+
+    /** Returns message code based on action
+     * 0 - if exist
+     * 1 - if not exist
+     * */
+    public static byte checkUserName(String userName){
+        return 1;
     }
 
     /** Returns message code based on action

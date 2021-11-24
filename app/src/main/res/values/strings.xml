@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">testing</string>
-    <string name="wpiszhaslo">Wpisz hasło</string>
-    <string name="wprowadz">Zaloguj</string>
-    <string name="errorpassword">Nie poprawne hasło</string>
-    <string name="create_accout">Stwórz Konto</string>
+    <string name="appName">testing</string>
+    <string name="password">Wpisz hasło</string>
+    <string name="acceptButton">Zaloguj</string>
+    <string name="errorPassword">Niepoprawne hasło</string>
+    <string name="createAccount">Stwórz Konto</string>
     <string name="nameOrNick">Podaj Imię/Nick</string>
-    <string name="repetPassword">Powtórz hasło</string>
+    <string name="repeatPassword">Powtórz hasło</string>
     <string name="redCross">redCross</string>
     <string name="greenMark">greenMark</string>
     <string name="create">Stwórz</string>
+    <string name="userName">Nazwa użytkownika</string>
 </resources>
