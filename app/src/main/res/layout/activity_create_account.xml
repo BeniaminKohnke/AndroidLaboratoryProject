@@ -11,7 +11,7 @@
         android:layout_width="213dp"
         android:layout_height="43dp"
         android:layout_marginTop="48dp"
-        android:text="@string/create_accout"
+        android:text="@string/createAccount"
         android:textSize="22sp"
         android:gravity="center"
 
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonNameNick"
+        android:id="@+id/createAccountUserNameId"
         android:layout_width="211dp"
         android:layout_height="53dp"
         android:layout_marginStart="30dp"
@@ -31,13 +31,13 @@
         android:hint="@string/nameOrNick"
         android:inputType="textPersonName"
         android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonPassword"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountPasswordId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonPassword"
+        android:id="@+id/createAccountPasswordId"
         android:layout_width="211dp"
         android:layout_height="53dp"
         android:layout_marginStart="30dp"
@@ -45,16 +45,16 @@
         android:layout_marginBottom="32dp"
         android:autofillHints="password"
         android:ems="10"
-        android:hint="@string/wpiszhaslo"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonRepetPassword"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountRepeatPasswordId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonRepetPassword"
+        android:id="@+id/createAccountRepeatPasswordId"
         android:layout_width="211dp"
         android:layout_height="53dp"
         android:layout_marginStart="30dp"
@@ -62,7 +62,7 @@
         android:layout_marginBottom="360dp"
         android:autofillHints="password"
         android:ems="10"
-        android:hint="@string/repetPassword"
+        android:hint="@string/repeatPassword"
         android:inputType="textPassword"
         android:textColorHint="#757575"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,7 +80,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonRepetPassword"
+        app:layout_constraintStart_toEndOf="@+id/createAccountRepeatPasswordId"
         app:srcCompat="@drawable/img" />
 
     <ImageView
@@ -93,7 +93,7 @@
         app:layout_constraintBottom_toTopOf="@+id/redCrossRepetPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonPassword"
+        app:layout_constraintStart_toEndOf="@+id/createAccountPasswordId"
         app:srcCompat="@drawable/img" />
 
     <ImageView
@@ -106,7 +106,7 @@
         app:layout_constraintBottom_toTopOf="@+id/redCrossPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.254"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonNameNick"
+        app:layout_constraintStart_toEndOf="@+id/createAccountUserNameId"
         app:srcCompat="@drawable/img" />
 
     <ImageView
@@ -119,7 +119,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonRepetPassword"
+        app:layout_constraintStart_toEndOf="@+id/createAccountRepeatPasswordId"
         app:srcCompat="@drawable/img_1" />
 
     <ImageView
@@ -132,7 +132,7 @@
         app:layout_constraintBottom_toTopOf="@+id/redCrossRepetPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonPassword"
+        app:layout_constraintStart_toEndOf="@+id/createAccountPasswordId"
         app:srcCompat="@drawable/img_1" />
 
     <ImageView
@@ -145,18 +145,28 @@
         app:layout_constraintBottom_toTopOf="@+id/redCrossPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.254"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonNameNick"
+        app:layout_constraintStart_toEndOf="@+id/createAccountUserNameId"
         app:srcCompat="@drawable/img_1" />
 
     <Button
-        android:id="@+id/createButton"
+        android:id="@+id/createButtonId"
         android:layout_width="205dp"
         android:layout_height="81dp"
         android:layout_marginBottom="224dp"
-        android:text="@string/create"
         android:backgroundTint="#35DC2E"
+        android:onClick="createAccountAction"
+        android:text="@string/create"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/conditionTextId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="580dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
