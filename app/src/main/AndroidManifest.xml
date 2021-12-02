@@ -14,7 +14,7 @@
             android:exported="true"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".DisplayMessageActivity"
+            android:name=".DayScheduleActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

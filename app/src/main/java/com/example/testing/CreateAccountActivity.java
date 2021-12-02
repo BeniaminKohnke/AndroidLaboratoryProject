@@ -59,7 +59,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         String userPasswordFromView = userPasswordView.getText().toString();
         userPasswordView.setVisibility(View.INVISIBLE);
 
-        ((EditText)findViewById(R.id.createAccountRepeatPasswordId)).setVisibility(View.INVISIBLE);
+        findViewById(R.id.createAccountRepeatPasswordId).setVisibility(View.INVISIBLE);
 
         DBConnection.createAccount(userNameFromView, userPasswordFromView);
         ((TextView)findViewById(R.id.conditionTextId)).setText("Konto zostało utworzone");
