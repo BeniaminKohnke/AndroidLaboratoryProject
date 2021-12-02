@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     public static final String PASSWORD_VIEW_TEXT = "com.example.myfirstapp.MESSAGE";
@@ -17,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void sendMessage(View view){
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        Intent intent = new Intent(this, DayScheduleActivity.class);
         String passwordFromView = ((EditText)findViewById(R.id.passwordViewId)).getText().toString();
         String userNameFromView = ((EditText)findViewById(R.id.userNameViewId)).getText().toString();
 

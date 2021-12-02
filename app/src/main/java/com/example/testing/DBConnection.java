@@ -10,7 +10,7 @@ public class DBConnection {
      * 1 - if account was created
      * */
     public static byte createAccount(String userName, String password){
-        userNameFromDB = userName;
+        userNameFromDB = userName.toUpperCase();
         passwordFromDB = password;
 
         //Check if account already exists and add if not
@@ -22,6 +22,7 @@ public class DBConnection {
      * 1 - if not exist
      * */
     public static byte checkUserName(String userName){
+        //userName.toUpperCase();
         return 1;
     }
 
@@ -31,7 +32,7 @@ public class DBConnection {
      * 2 - is not equal*/
     public static byte checkLoggingData(String userName, String password){
         if(!userNameFromDB.isEmpty() && !passwordFromDB.isEmpty()){
-            return (byte)(userName.equals(userNameFromDB) && password.equals(passwordFromDB) ? 1 : 2);
+            return (byte)(userName.toUpperCase().equals(userNameFromDB) && password.equals(passwordFromDB) ? 1 : 2);
         }
 
         //Check if input is equal to database data
