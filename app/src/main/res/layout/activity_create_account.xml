@@ -74,12 +74,11 @@
         android:id="@+id/redCrossRepetPassword"
         android:layout_width="54dp"
         android:layout_height="47dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="364dp"
         android:contentDescription="@string/redCross"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toEndOf="@+id/createAccountRepeatPasswordId"
         app:srcCompat="@drawable/img" />
 
@@ -87,12 +86,11 @@
         android:id="@+id/redCrossPassword"
         android:layout_width="54dp"
         android:layout_height="47dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="36dp"
         android:contentDescription="@string/redCross"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/redCrossRepetPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toEndOf="@+id/createAccountPasswordId"
         app:srcCompat="@drawable/img" />
 
@@ -100,12 +98,11 @@
         android:id="@+id/redCrossNameOrNick"
         android:layout_width="54dp"
         android:layout_height="47dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="40dp"
         android:contentDescription="@string/redCross"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/redCrossPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toEndOf="@+id/createAccountUserNameId"
         app:srcCompat="@drawable/img" />
 
@@ -113,12 +110,11 @@
         android:id="@+id/greenMarkRepetPassword"
         android:layout_width="54dp"
         android:layout_height="47dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="364dp"
         android:contentDescription="@string/greenMark"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toEndOf="@+id/createAccountRepeatPasswordId"
         app:srcCompat="@drawable/img_1" />
 
@@ -126,12 +122,11 @@
         android:id="@+id/greenMarkPassword"
         android:layout_width="54dp"
         android:layout_height="47dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="36dp"
-        android:visibility="invisible"
         android:contentDescription="@string/greenMark"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/redCrossRepetPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toEndOf="@+id/createAccountPasswordId"
         app:srcCompat="@drawable/img_1" />
 
@@ -139,12 +134,11 @@
         android:id="@+id/greenMarkNameOrNick"
         android:layout_width="54dp"
         android:layout_height="47dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="40dp"
         android:contentDescription="@string/greenMark"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/redCrossPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toEndOf="@+id/createAccountUserNameId"
         app:srcCompat="@drawable/img_1" />
 
@@ -166,7 +160,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="580dp" />
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="450dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

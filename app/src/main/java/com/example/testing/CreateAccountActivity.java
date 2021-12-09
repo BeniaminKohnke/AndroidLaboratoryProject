@@ -30,6 +30,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     String userPasswordFromView = userPasswordView.getText().toString();
                     String userRepeatPasswordFromView = userRepeatPasswordView.getText().toString();
 
+                    if(DBConnection.checkUserName(userNameFromView) == 1){
+
+                    }
+
                     ArrayList<KeyValuePair> conditions = new ArrayList<>();
                     conditions.add(new KeyValuePair(DBConnection.checkUserName(userNameFromView) == 1, "Nie można użyć nazwy"));
                     conditions.add(new KeyValuePair(!userPasswordFromView.isEmpty(), "Hasło nie może być puste"));
@@ -44,6 +48,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                         findViewById(R.id.createButtonId).setVisibility(View.VISIBLE);
                     }
                 }
+
+
 
                 handler.postDelayed(this,200);
             }
@@ -62,7 +68,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         findViewById(R.id.createAccountRepeatPasswordId).setVisibility(View.INVISIBLE);
 
         DBConnection.createAccount(userNameFromView, userPasswordFromView);
-        ((TextView)findViewById(R.id.conditionTextId)).setText("Konto zostało utworzone");
+
         findViewById(R.id.createButtonId).setVisibility(View.INVISIBLE);
     }
 
