@@ -16,6 +16,5 @@ public class DayScheduleActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.PASSWORD_VIEW_TEXT);
 
-
     }
 }

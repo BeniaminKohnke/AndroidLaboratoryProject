@@ -30,26 +30,55 @@ public class CreateAccountActivity extends AppCompatActivity {
                     String userPasswordFromView = userPasswordView.getText().toString();
                     String userRepeatPasswordFromView = userRepeatPasswordView.getText().toString();
 
-                    if(DBConnection.checkUserName(userNameFromView) == 1){
+                    StringBuilder errors = new StringBuilder("Błędy: ");
+                    boolean isCorrect = true;
 
+                    if(userNameFromView.isEmpty() || !(DBConnection.checkUserName(userNameFromView) == 1)){
+                        errors.append("nie można użyć nazwy, ");
+                        findViewById(R.id.greenMarkNameOrNick).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.redCrossNameOrNick).setVisibility(View.VISIBLE);
+                        isCorrect = false;
                     }
 
-                    ArrayList<KeyValuePair> conditions = new ArrayList<>();
-                    conditions.add(new KeyValuePair(DBConnection.checkUserName(userNameFromView) == 1, "Nie można użyć nazwy"));
-                    conditions.add(new KeyValuePair(!userPasswordFromView.isEmpty(), "Hasło nie może być puste"));
-                    conditions.add(new KeyValuePair(userPasswordFromView.length() > 6, "Hasło jest za krótkie"));
-                    conditions.add(new KeyValuePair(userPasswordFromView.equals(userRepeatPasswordFromView), "Hasła nie są równe"));
+                    {
+                        boolean isPasswordEmpty = userPasswordFromView.isEmpty();
+                        boolean isPasswordToShort = !(userPasswordFromView.length() > 6);
 
-                    KeyValuePair condition = getFirstPairWithFalseKey(conditions);
-                    if(condition != null){
-                        ((TextView)findViewById(R.id.conditionTextId)).setText(condition.value);
-                    }else{
+                        if(isPasswordEmpty || isPasswordToShort){
+                            if(isPasswordEmpty){
+                                errors.append("hasło nie może być puste, ");
+                            }
+                            if(isPasswordToShort && !isPasswordEmpty){
+                                errors.append("hasło jest za krótkie, ");
+                            }
+
+                            findViewById(R.id.greenMarkPassword).setVisibility(View.INVISIBLE);
+                            findViewById(R.id.redCrossPassword).setVisibility(View.VISIBLE);
+                            isCorrect = false;
+                        }
+                    }
+
+                    if(!userPasswordFromView.equals(userRepeatPasswordFromView)) {
+                        errors.append("hasła nie są równe, ");
+                        findViewById(R.id.greenMarkRepetPassword).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.redCrossRepetPassword).setVisibility(View.VISIBLE);
+                        isCorrect = false;
+                    }
+
+                    if(isCorrect){
+                        findViewById(R.id.redCrossNameOrNick).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.greenMarkNameOrNick).setVisibility(View.VISIBLE);
+                        findViewById(R.id.redCrossPassword).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.greenMarkPassword).setVisibility(View.VISIBLE);
+                        findViewById(R.id.redCrossRepetPassword).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.greenMarkRepetPassword).setVisibility(View.VISIBLE);
                         ((TextView)findViewById(R.id.conditionTextId)).setText("");
                         findViewById(R.id.createButtonId).setVisibility(View.VISIBLE);
+                    }else{
+                        findViewById(R.id.createButtonId).setVisibility(View.INVISIBLE);
+                        ((TextView)findViewById(R.id.conditionTextId)).setText(errors.toString());
                     }
                 }
-
-
 
                 handler.postDelayed(this,200);
             }
@@ -59,35 +88,11 @@ public class CreateAccountActivity extends AppCompatActivity {
     public void createAccountAction(View view){
         EditText userNameView = findViewById(R.id.createAccountUserNameId);
         String userNameFromView = userNameView.getText().toString();
-        userNameView.setVisibility(View.INVISIBLE);
 
         EditText userPasswordView = findViewById(R.id.createAccountPasswordId);
         String userPasswordFromView = userPasswordView.getText().toString();
-        userPasswordView.setVisibility(View.INVISIBLE);
-
-        findViewById(R.id.createAccountRepeatPasswordId).setVisibility(View.INVISIBLE);
 
         DBConnection.createAccount(userNameFromView, userPasswordFromView);
-
-        findViewById(R.id.createButtonId).setVisibility(View.INVISIBLE);
-    }
-
-    private class KeyValuePair{
-        public boolean key;
-        public String value;
-
-        public KeyValuePair(boolean key, String value){
-            this.key = key;
-            this.value = value;
-        }
-    }
-
-    private KeyValuePair getFirstPairWithFalseKey(ArrayList<KeyValuePair> pairs){
-        for (KeyValuePair pair : pairs) {
-            if(!pair.key){
-                return pair;
-            }
-        }
-        return null;
+        finish();
     }
 }
