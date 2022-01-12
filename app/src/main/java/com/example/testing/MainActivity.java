@@ -20,8 +20,12 @@ public class MainActivity extends AppCompatActivity {
         String passwordFromView = ((EditText)findViewById(R.id.passwordViewId)).getText().toString();
         String userNameFromView = ((EditText)findViewById(R.id.userNameViewId)).getText().toString();
 
-        if(DBConnection.checkLoggingData(userNameFromView, passwordFromView) == 1){
+        int id = new DBConnection(MainActivity.this).checkLoggingData(userNameFromView, passwordFromView);
+        if(id != -1){
             intent.putExtra(PASSWORD_VIEW_TEXT, passwordFromView);
+            DBConnection.currentUser.id = id;
+            DBConnection.currentUser.name = userNameFromView;
+            DBConnection.currentUser.password = passwordFromView;
             startActivity(intent);
         }else{
             findViewById(R.id.errorPassword).setVisibility(View.VISIBLE);

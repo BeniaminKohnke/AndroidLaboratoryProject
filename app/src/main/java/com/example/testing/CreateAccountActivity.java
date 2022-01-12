@@ -33,7 +33,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     StringBuilder errors = new StringBuilder("Błędy: ");
                     boolean isCorrect = true;
 
-                    if(userNameFromView.isEmpty() || !(DBConnection.checkUserName(userNameFromView) == 1)){
+                    if(userNameFromView.isEmpty() || new DBConnection(CreateAccountActivity.this).checkUserName(userNameFromView)){
                         errors.append("nie można użyć nazwy, ");
                         findViewById(R.id.greenMarkNameOrNick).setVisibility(View.INVISIBLE);
                         findViewById(R.id.redCrossNameOrNick).setVisibility(View.VISIBLE);
@@ -92,7 +92,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         EditText userPasswordView = findViewById(R.id.createAccountPasswordId);
         String userPasswordFromView = userPasswordView.getText().toString();
 
-        DBConnection.createAccount(userNameFromView, userPasswordFromView);
+        new DBConnection(CreateAccountActivity.this).createAccount(userNameFromView, userPasswordFromView);
         finish();
     }
 }

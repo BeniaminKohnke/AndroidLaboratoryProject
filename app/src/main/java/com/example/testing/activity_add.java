@@ -75,30 +75,24 @@ public class activity_add extends AppCompatActivity {
     }
 
     public void addActivityAction(){ // przycisk DODAJ
-        //
-         RadioGroup radioGroup = findViewById(R.id.radioGroup);
-         int selectedRadioBtnID = radioGroup.getCheckedRadioButtonId();
-        RadioButton radioButtin = findViewById(selectedRadioBtnID);
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
+        int selectedRadioBtnID = radioGroup.getCheckedRadioButtonId();
+        RadioButton radioButton = findViewById(selectedRadioBtnID);
 
         CheckBox chBox = findViewById(R.id.checkBox);
         if(chBox.isChecked() && ((Calendar.HOUR_OF_DAY < mHour) || (Calendar.HOUR_OF_DAY == mHour && Calendar.MINUTE < mMin))){
+            Activity activity = new Activity();
 
-            //tworzy powiadomienie
+            activity.name = ((EditText)findViewById(R.id.ActivityName)).getText().toString();
+            activity.description = ((EditText)findViewById(R.id.bonusInfo)).getText().toString();
+            activity.priority  = (radioButton.getText()).toString();
+            activity.startHour = mHour;
+            activity.startMinute = mMin;
+            activity.finishHour = fHour;
+            activity.finishMinute = fMin;
+            activity.userId = DBConnection.currentUser.id;
+
+            new DBConnection(activity_add.this).addActivity(DBConnection.currentUser.id, activity);
         }
-        // trzeba zapisać godziny mHour,mMin godzina startu aktywności
-        // fHour,fMin godziny zakończenia
-
-        String nazwa = ((EditText)findViewById(R.id.ActivityName)).getText().toString();
-        String info = ((EditText)findViewById(R.id.bonusInfo)).getText().toString();
-
-        // dodatkowe info
-        String priorytet  = (radioButtin.getText()).toString();
-
     }
-
-
-
-
-
-
 }
