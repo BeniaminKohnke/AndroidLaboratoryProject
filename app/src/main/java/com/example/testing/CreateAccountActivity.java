@@ -38,6 +38,9 @@ public class CreateAccountActivity extends AppCompatActivity {
                         findViewById(R.id.greenMarkNameOrNick).setVisibility(View.INVISIBLE);
                         findViewById(R.id.redCrossNameOrNick).setVisibility(View.VISIBLE);
                         isCorrect = false;
+                    }else{
+                        findViewById(R.id.greenMarkNameOrNick).setVisibility(View.VISIBLE);
+                        findViewById(R.id.redCrossNameOrNick).setVisibility(View.INVISIBLE);
                     }
 
                     {
@@ -55,23 +58,27 @@ public class CreateAccountActivity extends AppCompatActivity {
                             findViewById(R.id.greenMarkPassword).setVisibility(View.INVISIBLE);
                             findViewById(R.id.redCrossPassword).setVisibility(View.VISIBLE);
                             isCorrect = false;
+                        }else{
+                            findViewById(R.id.greenMarkPassword).setVisibility(View.VISIBLE);
+                            findViewById(R.id.redCrossPassword).setVisibility(View.INVISIBLE);
+                        }
+
+                        boolean areEqual = userPasswordFromView.equals(userRepeatPasswordFromView);
+                        if(!areEqual || isPasswordEmpty || isPasswordToShort) {
+                            if(!areEqual){
+                                errors.append("hasła nie są równe, ");
+                            }
+                            findViewById(R.id.greenMarkRepetPassword).setVisibility(View.INVISIBLE);
+                            findViewById(R.id.redCrossRepetPassword).setVisibility(View.VISIBLE);
+                            isCorrect = false;
+                        }else{
+                            findViewById(R.id.greenMarkRepetPassword).setVisibility(View.VISIBLE);
+                            findViewById(R.id.redCrossRepetPassword).setVisibility(View.INVISIBLE);
                         }
                     }
 
-                    if(!userPasswordFromView.equals(userRepeatPasswordFromView)) {
-                        errors.append("hasła nie są równe, ");
-                        findViewById(R.id.greenMarkRepetPassword).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.redCrossRepetPassword).setVisibility(View.VISIBLE);
-                        isCorrect = false;
-                    }
 
                     if(isCorrect){
-                        findViewById(R.id.redCrossNameOrNick).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.greenMarkNameOrNick).setVisibility(View.VISIBLE);
-                        findViewById(R.id.redCrossPassword).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.greenMarkPassword).setVisibility(View.VISIBLE);
-                        findViewById(R.id.redCrossRepetPassword).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.greenMarkRepetPassword).setVisibility(View.VISIBLE);
                         ((TextView)findViewById(R.id.conditionTextId)).setText("");
                         findViewById(R.id.createButtonId).setVisibility(View.VISIBLE);
                     }else{

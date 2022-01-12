@@ -20,50 +20,46 @@ public class DBConnection extends SQLiteOpenHelper  {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public boolean createAccount(String userName, String password){
-        if (checkUserName(userName)){
-            return false;
-        }else{
-            SQLiteDatabase db = this.getReadableDatabase();
+    public void createAccount(String userName, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
+        if(db != null){
             ContentValues values = new ContentValues();
             values.put("name", userName);
             values.put("password", password);
             db.insert(TABLE_USERS, null, values);
             db.close();
-            return true;
         }
     }
 
     public boolean checkUserName(String userName){
+        boolean exists = true;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_USERS, new String[] { "id", "name", "password" }, "name =?",
-                new String[] { userName.toUpperCase() }, null, null, null, null);
+        Cursor cursor = db.rawQuery("SELECT id FROM " + TABLE_USERS + " WHERE name LIKE '" + userName + "';", new String[]{});
         if(cursor != null){
-            boolean exists = cursor.moveToFirst();
+            exists = cursor.moveToFirst();
             cursor.close();
-            db.close();
-            return exists;
         }
-        return false;
+        db.close();
+        return exists;
     }
 
     /** Returns user's id*/
     public int checkLoggingData(String userName, String password){
+        int id = -1;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_USERS, new String[] { "id",
-                        "name", "password" },  "name =?",
-                new String[] { userName.toUpperCase() }, null, null, null, null);
-        if (cursor != null){
-            cursor.moveToFirst();
-            if(cursor.getString(1).toUpperCase().equals(userName.toUpperCase())
-                    && cursor.getString(2).toUpperCase().equals(password.toUpperCase())){
-                int id = Integer.parseInt(cursor.getString(0));
+        if(db != null){
+            Cursor cursor = db.rawQuery("SELECT id FROM " + TABLE_USERS + " WHERE name LIKE '"
+                + userName + "' AND password LIKE '" + password + "';", new String[]{});
+
+            if (cursor != null){
+                if(cursor.moveToFirst()){
+                    id = Integer.parseInt(cursor.getString(0));
+                }
                 cursor.close();
-                return id;
             }
+            db.close();
         }
-        db.close();
-        return -1;
+        return id;
     }
 
     @Override
@@ -78,47 +74,56 @@ public class DBConnection extends SQLiteOpenHelper  {
         db.execSQL(CREATE_ACTIVITIES_TABLE);
     }
 
-    public void addActivity(int id, Activity activity){
-        if(id != -1){
+    public void addActivity(int userId, Activity activity){
+        if(userId != -1){
             SQLiteDatabase db = this.getReadableDatabase();
-            ContentValues values = new ContentValues();
+            if(db != null){
+                ContentValues values = new ContentValues();
 
-            values.put("userId", id);
-            values.put("name", activity.name);
-            values.put("description", activity.description);
-            values.put("startDate", activity.startHour);
-            values.put("finishDate", activity.finishHour);
-            values.put("priority", activity.priority);
+                values.put("userId", userId);
+                values.put("name", activity.name);
+                values.put("startHour", activity.startHour);
+                values.put("startMinute", activity.startMinute);
+                values.put("finishHour", activity.finishHour);
+                values.put("finishMinute", activity.finishMinute);
+                values.put("description", activity.description);
+                values.put("priority", activity.priority);
 
-            db.insert(TABLE_ACTIVITIES, null, values);
+                db.insert(TABLE_ACTIVITIES, null, values);
+                db.close();
+            }
+        }
+    }
+
+    public void deleteActivity(int activityId){
+        SQLiteDatabase db = this.getReadableDatabase();
+        if(db != null){
+            db.execSQL("DELETE FROM " + TABLE_ACTIVITIES + " WHERE id = " + activityId + ";");
             db.close();
         }
     }
 
-    public ArrayList<Activity> getUserActivities(int id){
+    public ArrayList<Activity> getUserActivities(int userId){
         ArrayList<Activity> activities = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_USERS,
-                new String[] { "id", "userId", "name", "startHour", "startMinute", "finishHour", "finishMinute", "description", "priority" },
-                "userId =?", new String[] { String.valueOf(id) },
-                null, null, null, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_ACTIVITIES + " WHERE userId = " + userId + ";", new String[]{});
         if(cursor != null){
-            cursor.moveToFirst();
-            do{
-                Activity activity = new Activity();
-                activity.id = Integer.parseInt(cursor.getString(0));
-                activity.userId = Integer.parseInt(cursor.getString(1));
-                activity.name = cursor.getString(2);
-                activity.startHour = Integer.parseInt(cursor.getString(3));
-                activity.startMinute = Integer.parseInt(cursor.getString(4));
-                activity.finishHour = Integer.parseInt(cursor.getString(5));
-                activity.finishMinute = Integer.parseInt(cursor.getString(6));
-                activity.description = cursor.getString(7);
-                activity.priority = cursor.getString(8);
-                activities.add(activity);
+            if(cursor.moveToFirst()) {
+                do{
+                    Activity activity = new Activity();
+                    activity.id = Integer.parseInt(cursor.getString(0));
+                    activity.userId = Integer.parseInt(cursor.getString(1));
+                    activity.name = cursor.getString(2);
+                    activity.startHour = Integer.parseInt(cursor.getString(3));
+                    activity.startMinute = Integer.parseInt(cursor.getString(4));
+                    activity.finishHour = Integer.parseInt(cursor.getString(5));
+                    activity.finishMinute = Integer.parseInt(cursor.getString(6));
+                    activity.description = cursor.getString(7);
+                    activity.priority = cursor.getString(8);
+                    activities.add(activity);
+                } while(cursor.moveToNext());
             }
-            while(cursor.moveToNext());
             cursor.close();
         }
         return activities;
