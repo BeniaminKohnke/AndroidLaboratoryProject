@@ -10,4 +10,5 @@
     <color name="blue">#2f7dd0</color>
     <color name="orange">#d0822f</color>
     <color name="paper">#c0c55e</color>
+    <color name="gray">#FF555555</color>
 </resources>

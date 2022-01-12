@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class DayScheduleActivity extends AppCompatActivity {
@@ -15,6 +16,12 @@ public class DayScheduleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.PASSWORD_VIEW_TEXT);
+
+    }
+
+    public void goToCreateActivity(View view){
+        Intent intent = new Intent(this,activity_add.class);
+        startActivity(intent);
 
     }
 }
