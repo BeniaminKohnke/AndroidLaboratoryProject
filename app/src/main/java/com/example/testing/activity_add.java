@@ -46,7 +46,7 @@ public class activity_add extends AppCompatActivity {
                         Toast.makeText(activity_add.this, ""+hourOfDay+":"+minute, Toast.LENGTH_SHORT).show();
 
                     }
-                },mHour,mMin,false);
+                },mHour,mMin,true);
 
                 timePickerDialog.show();
 
@@ -67,24 +67,27 @@ public class activity_add extends AppCompatActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         Toast.makeText(activity_add.this, ""+hourOfDay+":"+minute, Toast.LENGTH_SHORT).show();
                     }
-                },fHour,fMin,false);
+                },fHour,fMin,true);
 
                 timePickerDialog.show();
             }
         });
     }
 
-    public void addActivityAction(){
+    public void addActivityAction(){ // przycisk DODAJ
         //
          RadioGroup radioGroup = findViewById(R.id.radioGroup);
          int selectedRadioBtnID = radioGroup.getCheckedRadioButtonId();
         RadioButton radioButtin = findViewById(selectedRadioBtnID);
 
         CheckBox chBox = findViewById(R.id.checkBox);
-        if(chBox.isChecked()){
-            //twórz powiadomienie
+        if(chBox.isChecked() && ((Calendar.HOUR_OF_DAY < mHour) || (Calendar.HOUR_OF_DAY == mHour && Calendar.MINUTE < mMin))){
+
+            //tworzy powiadomienie
         }
-        // trzeba zapisać godziny
+        // trzeba zapisać godziny mHour,mMin godzina startu aktywności
+        // fHour,fMin godziny zakończenia
+
         String nazwa = ((EditText)findViewById(R.id.ActivityName)).getText().toString();
         String info = ((EditText)findViewById(R.id.bonusInfo)).getText().toString();
 
