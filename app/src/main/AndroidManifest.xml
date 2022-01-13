@@ -29,6 +29,7 @@
             android:name=".activity_add"
             android:exported="true"
             android:parentActivityName=".DayScheduleActivity" />
+        <receiver android:name=".ReminderBroadcast"/>
     </application>
 
 </manifest>

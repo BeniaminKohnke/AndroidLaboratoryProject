@@ -35,4 +35,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,CreateAccountActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ((EditText)findViewById(R.id.passwordViewId)).setText("");
+        ((EditText)findViewById(R.id.userNameViewId)).setText("");
+    }
 }

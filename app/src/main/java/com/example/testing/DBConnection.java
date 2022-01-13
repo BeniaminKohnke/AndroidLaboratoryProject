@@ -70,7 +70,7 @@ public class DBConnection extends SQLiteOpenHelper  {
 
         String CREATE_ACTIVITIES_TABLE
                 = "CREATE TABLE " + TABLE_ACTIVITIES
-                + " (id INTEGER PRIMARY KEY AUTOINCREMENT, userId INTEGER, name TEXT, startHour INTEGER, startMinute INTEGER, finishHour INTEGER, finishMinute INTEGER, description TEXT, priority TEXT, FOREIGN KEY(userId) REFERENCES users(id));";
+                + " (id INTEGER PRIMARY KEY AUTOINCREMENT, userId INTEGER, name TEXT, startHour INTEGER, startMinute INTEGER, finishHour INTEGER, finishMinute INTEGER, description TEXT, priority TEXT, day INTEGER, FOREIGN KEY(userId) REFERENCES users(id));";
         db.execSQL(CREATE_ACTIVITIES_TABLE);
     }
 
@@ -88,6 +88,7 @@ public class DBConnection extends SQLiteOpenHelper  {
                 values.put("finishMinute", activity.finishMinute);
                 values.put("description", activity.description);
                 values.put("priority", activity.priority);
+                values.put("day", activity.day);
 
                 db.insert(TABLE_ACTIVITIES, null, values);
                 db.close();
@@ -121,6 +122,7 @@ public class DBConnection extends SQLiteOpenHelper  {
                     activity.finishMinute = Integer.parseInt(cursor.getString(6));
                     activity.description = cursor.getString(7);
                     activity.priority = cursor.getString(8);
+                    activity.day = Integer.parseInt(cursor.getString(9));
                     activities.add(activity);
                 } while(cursor.moveToNext());
             }
